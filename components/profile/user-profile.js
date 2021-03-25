@@ -22,10 +22,31 @@ function UserProfile() {
   //   return <div className={classes.profile}>Loading ... !! </div>;
   // }
 
+  const handleSumbit = async (data) => {
+
+   const response = await fetch("/api/user/change-password",{
+      method:"PATCH",
+      headers:{
+        "Content-Type" : "application/json"
+      },
+      body:JSON.stringify(data)
+    })
+
+    const result = await response.json()
+    console.log(result)
+
+ 
+  
+
+
+
+  }
+
+
   return (
     <section className={classes.profile}>
       <h1>Your User Profile</h1>
-      <ProfileForm />
+      <ProfileForm onAddForm={handleSumbit} />
     </section>
   );
 }
